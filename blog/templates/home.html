@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+ {% block content %}
+{% load static %}
+ 
+  
+
+
+
+      <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'images/animal.jpg' %}" height="400px" class="d-block w-100" alt="...">
+         
+        </div>
+     
+      {% comment %} about {% endcomment %}
+
+      <div class="container py-5">
+        <h1 class="text-center">about</h1>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt accusamus vitae ullam rem. Dicta minima tenetur porro cumque natus enim! Officiis consequatur saepe minima! Officiis voluptatem molestiae, facere ducimus similique, quo aperiam, cupiditate iusto dolore nesciunt vero vel quaerat consequatur a tenetur earum id iure autem inventore. Eveniet laudantium maiores neque, sequi minus hic veritatis porro voluptatibus culpa odit ab ex quo numquam debitis! Facilis odio pariatur distinctio provident a laborum iste voluptas ex temporibus rerum officiis, similique voluptate quam illum facere doloribus consectetur fugit molestiae quia dolorem qui. Laboriosam id cum cumque vel dicta suscipit provident esse officiis saepe.</p>
+      </div>
+
+
+      <div class="blog">
+        <div class="container py-4">
+          <h1 class="text-center py-4">Blog</h1>
+          <div class="row mb-2">
+            {% for i in blog  %}
+            <div class="col-md-6">
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                  <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
+                  <h3 class="mb-0">{{i.title}}</h3>
+                  <div class="mb-1 text-body-secondary">{{i.created_at}}</div>
+                  <p class="card-text mb-auto">{{i.short_desc}}</p>
+                  <a href="{% url 'content' i.id %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                    Continue reading
+                    <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                  </a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                  <img src="media/{{i.thumbnail}}" class="bd-placeholder-img" alt="">
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endblock %}
+
+
+
+
+     
